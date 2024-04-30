@@ -64,7 +64,6 @@ def get_weather():
     cur.execute("""
         SELECT id, period, short_desc, temperature, scraped_at
         FROM weather_forecasts
-        WHERE scraped_at >= current_date - INTERVAL '1 week'
         ORDER BY scraped_at DESC;
     """)
     weather_data = cur.fetchall()
@@ -78,4 +77,4 @@ def get_weather():
     return jsonify(result)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=10000, debug=True)
+    app.run()
